@@ -25,7 +25,6 @@ function distance(x1, y1, x2, y2) {
   y1 = Number(y1);
   x2 = Number(x2);
   y2 = Number(y2);
-
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
@@ -40,9 +39,7 @@ function quadratic(a, b, c) {
   if (disc > 0) {
     let r1 = (-b + Math.sqrt(disc)) / (2 * a);
     let r2 = (-b - Math.sqrt(disc)) / (2 * a);
-
-    // ensure ascending order (REQUIRED for autograder)
-    return r1 < r2 ? [r1, r2] : [r2, r1];
+    return r1 < r2 ? [r1, r2] : [r2, r1]; // ascending order
   } 
   else if (disc === 0) {
     return [-b / (2 * a)];
@@ -50,18 +47,15 @@ function quadratic(a, b, c) {
   else {
     let real = -b / (2 * a);
     let imag = Math.sqrt(-disc) / (2 * a);
-
     return [real + "+" + imag + "i", real + "-" + imag + "i"];
   }
 }
-
 
 // ----- Helpers -----
 function $(id) { return document.getElementById(id); }
 function setText(id, value) { $(id).textContent = String(value); }
 
 // ----- Click Handlers -----
-
 function onMyFuncClick() {
   setText('outMyFunc', myFunc());
 }
@@ -89,6 +83,5 @@ function onQuadraticClick() {
     $('qb').value,
     $('qc').value
   );
-
   setText('outQuadratic', roots.join(', '));
 }
